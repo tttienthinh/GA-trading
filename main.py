@@ -1,17 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[264]:
+# In[30]:
 
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 import ta, pickle
 
 
-# In[273]:
+# In[31]:
 
 
 df = pd.read_csv("data/train.csv", 
@@ -19,7 +18,7 @@ df = pd.read_csv("data/train.csv",
 df
 
 
-# In[62]:
+# In[32]:
 
 
 def get_features(df):
@@ -43,7 +42,7 @@ def get_features(df):
 
 # ## Create Population
 
-# In[215]:
+# In[33]:
 
 
 # indiv shape (6, 2, 2)
@@ -57,6 +56,10 @@ def conform_indiv(indiv):
             sup_index = (indicator, action, 1)
             if indiv[inf_index] > indiv[sup_index]:
                 indiv[inf_index], indiv[sup_index] = indiv[sup_index], indiv[inf_index]
+    for borne in range(n_borne):
+        for action in range(n_action):
+            index = (-1, action, borne)
+            indiv[index] = (indiv[index] + borne)/2
     return indiv
 
 def create_indiv():
@@ -65,21 +68,21 @@ def create_indiv():
     return indiv
 
 
-# In[216]:
+# In[34]:
 
 
 def create_pop(size=100):
-    pop = [(None, create_indiv()) for i in range(size)]
+    pop = [(None, create_indiv(), 0) for i in range(size)]
     return pop
         
 
 
 # ##  Evaluation
 
-# In[279]:
+# In[35]:
 
 
-spread = 15
+spread = 30
 indicators = ['rsi', 'stoch', 'stoch_signal', 'aroon', 'aroon_down', 'aroon_up']
 
 def match_condition(indiv, df):
@@ -93,41 +96,44 @@ def match_condition(indiv, df):
 
 def trade(df, low, high, start):
     ls = df.values.tolist()
-    for i in range(len(ls)):
+    n = len(ls)
+    for i in range(n):
         if ls[i][0] > high: # test high
-            return high
+            return high, i
         if ls[i][1] < low: # test low
-            return low
-    return start
+            return low, i
+    return start, n
 
 def eval_indiv(indiv, df):
     n = len(df)
     score = 0
-    for i in range(15, n-15):
+    i = 15
+    while i < n-15:
         df_indicators = df.iloc[i][indicators]
+        price = df.iloc[i]["close"]
         if match_condition(indiv[:, 0], df_indicators): # Test achat
-            price = df.iloc[i]["close"]
-            out = trade(df.iloc[i:][["high", "low"]], 
-                        price * (indiv[-1, 0, 0]+.5),
-                        price * (indiv[-1, 0, 1]+.5),
-                        price
-                       )
+            out, d = trade(df.iloc[i:][["high", "low"]], 
+                            price * (indiv[-1, 0, 0]+.5),
+                            price * (indiv[-1, 0, 1]+.5),
+                            price
+                           )
             score += (out-price) - spread
-        
+            i += d
         if match_condition(indiv[:, 1], df_indicators): # Test vente
-            price = df.iloc[i]["close"]
-            out = trade(df.iloc[i:][["high", "low"]], 
-                        price * (indiv[-1, 1, 0]+.5),
-                        price * (indiv[-1, 1, 1]+.5),
-                        price
-                       )
+            out, d = trade(df.iloc[i:][["high", "low"]], 
+                            price * (indiv[-1, 1, 0]+.5),
+                            price * (indiv[-1, 1, 1]+.5),
+                            price
+                           )
             score += (price-out) - spread
+            i += d
+        i+=1
     return score
 
 
 # # Selection
 
-# In[233]:
+# In[36]:
 
 
 def crossover(indiv1, indiv2, rate=.5):
@@ -147,37 +153,41 @@ def create_cross_pop(ls, size):
     n = len(ls)
     for i in range(size):
         a, b = np.random.randint(n, size=2)
-        ls_.append((None, crossover(ls[a][1], ls[b][1])))
+        ls_.append((None, crossover(ls[a][1], ls[b][1]), 0))
     return ls_
     
-def mutation(ls, rate=.2):
-    n = len(ls)
-    for i in range(int(n*rate)):
-        a = np.random.randint(n)
-        indiv = ls[a][1]
+def mutation(ls, rate=.3):
+    for i in range(len(ls)):
+        indiv = ls[i][1]
         indiv_ = create_indiv()
         indiv = crossover(indiv, indiv_, rate)
-        ls[a] = (None, indiv)
+        ls[i] = (None, indiv, 0)
     return ls
 
 def new_gen(ls):
-    ls_ = ls[:10]
-    ls_ = ls_ + create_cross_pop(ls[:30], 60)
-    ls_ = mutation(ls_)
-    ls_ = ls_ + create_pop(30)
-    return ls_
+    ls_ = []
+    best_times = 0
+    for (score, indiv, times) in ls[:10]: # taille 10
+        if score > 0:
+            times += 1
+        best_times = max(best_times, times)
+        ls_.append((score, indiv, times+1))
+    ls_ = ls_ + mutation(ls_) # taille 10+10 = 20
+    ls_ = ls_ + create_cross_pop(ls[:30], 50) # taille 20+50 = 70
+    ls_ = ls_ + create_pop(30) # taille 70+30 = 100
+    return ls_, best_times
 
 
 # # Processus
 
-# In[286]:
+# In[37]:
 
 
 df = get_features(df)
 df
 
 
-# In[289]:
+# In[38]:
 
 
 list_df = []
@@ -187,74 +197,35 @@ for i in range(40):
 len(list_df)
 
 
-# In[ ]:
+# In[43]:
 
 
+import time
 best_score = -1
+best_times = 0
 gen = 1
 population = create_pop()
-liste_best = [0]*40
-while sum(np.array(liste_best[-40:]) > 0) < 40:
+while best_times < 40:
     df_ = list_df[gen%40]
     for i in range(len(population)):
-        population[i] = (eval_indiv(population[i][1], df_), population[i][1])
+        population[i] = (eval_indiv(population[i][1], df_), population[i][1], population[i][2])
     population.sort(key=lambda x: x[0], reverse=True)
     best_score = population[0][0]
+    lowest_score = population[-1][0]
     liste_best.append(best_score)
     with open(f"record/{gen}", "wb") as fp:   #Pickling
         pickle.dump(population[0], fp)
         fp.close
     with open(f"record/actual", "wb") as fp:   #Pickling
         pickle.dump(population, fp)
+    population, best_times = new_gen(population)
     print(f"Generation {gen} best_score : {best_score}")
-    print(f"lowest_score : {population[-1][0]}")
-    population = new_gen(population)
+    print(f"Times : {best_times}")
+    print(f"lowest_score : {lowest_score}")
     gen += 1
+    time.sleep(60)
 
 
-# # Testing result
-
-# In[260]:
 
 
-with open(f"record/1", "rb") as fp:   #Pickling
-    population = pickle.load(fp)
-population
-
-
-# In[270]:
-
-
-def eval_indiv_test(indiv, df):
-    n = len(df)
-    score = 0
-    ordre = [[], []]
-    for i in range(15, n-15):
-        df_indicators = df.iloc[i][indicators]
-        if match_condition(indiv[:, 0], df_indicators): # Test achat
-            print("ACHAT")
-            price = df.iloc[i]["close"]
-            ordre[0].append(i)
-            ordre[1].append(price)
-            out = trade(df.iloc[i:][["high", "low"]], 
-                        price * (indiv[-1, 0, 0]+.5),
-                        price * (indiv[-1, 0, 1]+.5),
-                        price
-                       )
-            score += (out-price) - spread
-        
-        if match_condition(indiv[:, 1], df_indicators): # Test vente
-            print("VENTE")
-            price = df.iloc[i]["close"]
-            ordre[0].append(i)
-            ordre[1].append(price)
-            out = trade(df.iloc[i:][["high", "low"]], 
-                        price * (indiv[-1, 1, 0]+.5),
-                        price * (indiv[-1, 1, 1]+.5),
-                        price
-                       )
-            score += (price-out) - spread
-    return score, ordre
-score, ordre = eval_indiv_test(population[1], test)
-score
 
