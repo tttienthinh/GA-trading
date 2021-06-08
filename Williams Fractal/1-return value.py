@@ -12,7 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
-import ta, pickle, json, time
+import ta, pickle, json, time, schedule, requests
 
 now = datetime.now
 
@@ -140,6 +140,18 @@ def atr_calcul(df, window=14):
                                          window=window, fillna=True)
     return atr.average_true_range()
 
+def telegram_bot_sendtext(bot_message):
+    
+    bot_token = '1806732732:AAFxtjvhsucDPbOjBYSUzCNztqjntoI4Q-E'
+    bot_chatID = '-572290585'
+    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
+
+    response = requests.get(send_text)
+
+    return response.json()
+
+
+
 while True:
 
     kline = '1m'
@@ -162,9 +174,8 @@ while True:
 
     df = df.iloc[-120:].reset_index(drop=True)
 
-    print("\n\n---   ANALYZE   ---")
     timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
-    start = df.close[-1]
+    start = df.iloc[-3].close
     if ema20 < ema50 < ema100: # SELL only
         if bear:
             print("SELL BEAR")
@@ -175,16 +186,19 @@ while True:
                 SL = ema100
             if trigger and SL-start > 2*atr:
                 print("GOT ATR")
+                leverage = round(0.01/(1-SL/start), 2)
                 TP = start - (SL - start) - 2 * atr
                 print("-----     -----     -----     -----     -----")
-                print(timestamp)
-                print(f"OPEN BUY AT {start} BTC/USDT")
-                print(f"SL at {SL}")
-                print(f"TP at {TP}")
-                leverage = round(0.01/(1-SL/start), 2)
-                print(f"Leverage {leverage} to have : ")
-                print(f"   - Profit {100*leverage* (1 - TP/start)} %")
-                print(f"   - Loss   {100*leverage* (SL/start - 1)} %")
+                message = "\n".join([timestamp,
+                f"OPEN BUY AT {start} BTC/USDT",
+                f"SL at {SL}",
+                f"TP at {TP}",
+                f"Leverage {leverage} to have : "
+                f"   - Profit {100*leverage* (1 - TP/start)} %",
+                f"   - Loss   {100*leverage* (SL/start - 1)} %"])
+                
+                print(message)
+                telegram_bot_sendtext(message)
     
     if ema20 > ema50 > ema100: # BUY only
         if bull:
@@ -197,18 +211,19 @@ while True:
             if trigger and start-SL > 2*atr:
                 print("GOT ATR")
                 TP = start + (start - SL) + 2 * atr
-                print("-----     -----     -----     -----     -----")
-                print(timestamp)
-                print(f"OPEN BUY AT {start} BTC/USDT")
-                print(f"SL at {SL}")
-                print(f"TP at {TP}")
                 leverage = round(0.01/(1-SL/start), 2)
-                print(f"Leverage {leverage} to have : ")
-                print(f"   - Profit {100*leverage* (TP/start - 1)} %")
-                print(f"   - Loss   {100*leverage* (1 - SL/start)} %")
+                print("-----     -----     -----     -----     -----")
+                message = "\n".join([timestamp,
+                f"OPEN BUY AT {start} BTC/USDT",
+                f"SL at {SL}",
+                f"TP at {TP}",
+                f"Leverage {leverage} to have : ",
+                f"   - Profit {100*leverage* (TP/start - 1)} %",
+                f"   - Loss   {100*leverage* (1 - SL/start)} %"])
                 
-
-
+                print(message)
+                telegram_bot_sendtext(message)
+                
 
     date = np.array(
         [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
