@@ -154,17 +154,18 @@ while True:
     df['bear'], df['bull'] = wilFractal(df)
     df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
 
+    df = df.iloc[-120:].reset_index(drop=True)
     date = np.array(
-        [datetime.datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
-        for i in range(len(df[:100]))]
+        [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
+        for i in range(len(df))]
     )
-    plt.plot(date, df.close[:100], label='Price')
-    plt.plot(date, df.ema20[:100], label='EMA20')
-    plt.plot(date, df.ema50[:100], label='EMA50')
-    plt.plot(date, df.ema100[:100], label='EMA100')
-    plt.plot(date[df.bear[:100]], df.close[:100][df.bear[:100]] + 100, 
+    plt.plot(date, df.close, label='Price')
+    plt.plot(date, df.ema20, label='EMA20')
+    plt.plot(date, df.ema50, label='EMA50')
+    plt.plot(date, df.ema100, label='EMA100')
+    plt.plot(date[df.bear], df.close[df.bear] + 100, 
             "vr", label='Bear')
-    plt.plot(date[df.bull[:100]], df.close[:100][df.bull[:100]] - 100, 
+    plt.plot(date[df.bull], df.close[df.bull] - 100, 
             "^g", label='Bull')
     plt.legend()
     plt.grid()
