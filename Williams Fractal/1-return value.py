@@ -164,6 +164,7 @@ while True:
 
     print("\n\n---   ANALYZE   ---")
     timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
+    start = df.close[-1]
     if ema20 < ema50 < ema100: # SELL only
         if bear:
             print("SELL BEAR")
@@ -174,7 +175,6 @@ while True:
                 SL = ema100
             if trigger and SL-start > 2*atr:
                 print("GOT ATR")
-                start = df.close[-1]
                 TP = start - (SL - start) - 2 * atr
                 print("-----     -----     -----     -----     -----")
                 print(timestamp)
@@ -196,7 +196,6 @@ while True:
                 SL = ema100
             if trigger and start-SL > 2*atr:
                 print("GOT ATR")
-                start = df.close[-1]
                 TP = start + (start - SL) + 2 * atr
                 print("-----     -----     -----     -----     -----")
                 print(timestamp)
