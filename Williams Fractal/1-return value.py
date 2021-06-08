@@ -135,7 +135,7 @@ def ema(df, windows=[20]):
         )
     return emas
 
-def atr(df, window=14):
+def atr_calcul(df, window=14):
     atr = ta.volatility.AverageTrueRange(high=df.high, low=df.low, close=df.close, 
                                          window=window, fillna=True)
     return atr.average_true_range()
@@ -158,7 +158,7 @@ while True:
 
     df['bear'], df['bull'] = wilFractal(df)
     df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
-    df['atr'] = atr(df)
+    df['atr'] = atr_calcul(df)
 
     df = df.iloc[-120:].reset_index(drop=True)
 
