@@ -155,6 +155,56 @@ while True:
     df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
 
     df = df.iloc[-120:].reset_index(drop=True)
+
+    print("\n\n---   ANALYZE   ---")
+    timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
+    if ema20 < ema50 < ema100: # SELL only
+        if bear:
+            print("SELL BEAR")
+            trigger = False
+            if ema20 < h < ema50:
+                print("GOT TRIGGER")
+                trigger = True
+                SL = ema100
+            if trigger and SL-start > 2*atr:
+                print("GOT ATR")
+                start = df.close[-1]
+                TP = start - (SL - start) - 2 * atr
+                print("-----     -----     -----     -----     -----")
+                print(timestamp)
+                print(f"OPEN BUY AT {start} BTC/USDT")
+                print(f"SL at {SL}")
+                print(f"TP at {TP}")
+                leverage = round(0.01/(1-SL/start), 2)
+                print(f"Leverage {leverage} to have : ")
+                print(f"   - Profit {100*leverage* (1 - TP/start)} %")
+                print(f"   - Loss   {100*leverage* (SL/start - 1)} %")
+    
+    if ema20 > ema50 > ema100: # BUY only
+        if bull:
+            print("BUY BULL")
+            trigger = False
+            if ema20 > h > ema50:
+                print("GOT TRIGGER")
+                trigger = True
+                SL = ema100
+            if trigger and start-SL > 2*atr:
+                print("GOT ATR")
+                start = df.close[-1]
+                TP = start + (start - SL) + 2 * atr
+                print("-----     -----     -----     -----     -----")
+                print(timestamp)
+                print(f"OPEN BUY AT {start} BTC/USDT")
+                print(f"SL at {SL}")
+                print(f"TP at {TP}")
+                leverage = round(0.01/(1-SL/start), 2)
+                print(f"Leverage {leverage} to have : ")
+                print(f"   - Profit {100*leverage* (TP/start - 1)} %")
+                print(f"   - Loss   {100*leverage* (1 - SL/start)} %")
+                
+
+
+
     date = np.array(
         [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
         for i in range(len(df))]
@@ -173,4 +223,4 @@ while True:
 
     plt.pause(60 - now().second)
     plt.clf()
-    
+
