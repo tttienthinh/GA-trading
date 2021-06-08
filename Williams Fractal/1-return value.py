@@ -21,6 +21,9 @@ client = Client("0YoXpNjk2J0rwPmIDFlgRuu2fFHKHSADD6qUNoRVTr3N9Rddjdbg3AFP7jzyxvl
 
 
 ### FUNCTIONS
+binsizes = {"1m": 1, "5m": 5, "1h": 60, "1d": 1440}
+batch_size = 750
+
 def minutes_of_new_data(symbol, kline_size, data, source):
     if len(data) > 0:  
         old = parser.parse(data["timestamp"].iloc[-1])
