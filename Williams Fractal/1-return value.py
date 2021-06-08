@@ -172,5 +172,5 @@ while True:
     plt.title(df.timestamp[len(df)-1])
 
     plt.pause(60 - now().second)
-
-
+    plt.clf()
+    
