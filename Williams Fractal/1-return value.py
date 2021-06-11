@@ -186,16 +186,16 @@ while True:
                 SL = ema100
             if trigger and SL-start > 2*atr:
                 print("GOT ATR")
-                leverage = round(0.01/(1-SL/start), 2)
+                leverage = round(0.01/(1-SL/start), 1)
                 TP = start - (SL - start) - 2 * atr
                 print("-----     -----     -----     -----     -----")
                 message = "\n".join([timestamp,
-                f"OPEN BUY AT {start} BTC/USDT",
-                f"SL at {SL}",
-                f"TP at {TP}",
+                f"OPN SELL AT {start} BTC/USDT",
+                f"SL at {round(SL, 2)}",
+                f"TP at {round(TP, 2)}",
                 f"Leverage {leverage} to have : "
-                f"   - Profit {100*leverage* (1 - TP/start)} %",
-                f"   - Loss   {100*leverage* (SL/start - 1)} %"])
+                f"   - Profit {round(100*leverage* (1 - TP/start), 2)} %",
+                f"   - Loss   {round(100*leverage* (SL/start - 1), 2)} %"])
                 
                 print(message)
                 telegram_bot_sendtext(message)
@@ -211,15 +211,15 @@ while True:
             if trigger and start-SL > 2*atr:
                 print("GOT ATR")
                 TP = start + (start - SL) + 2 * atr
-                leverage = round(0.01/(1-SL/start), 2)
+                leverage = round(0.01/(1-SL/start), 1)
                 print("-----     -----     -----     -----     -----")
                 message = "\n".join([timestamp,
                 f"OPEN BUY AT {start} BTC/USDT",
-                f"SL at {SL}",
-                f"TP at {TP}",
+                f"SL at {round(SL, 2)}",
+                f"TP at {round(TP, 2)}",
                 f"Leverage {leverage} to have : ",
-                f"   - Profit {100*leverage* (TP/start - 1)} %",
-                f"   - Loss   {100*leverage* (1 - SL/start)} %"])
+                f"   - Profit {round(100*leverage* (TP/start - 1), 2)} %",
+                f"   - Loss   {round(100*leverage* (1 - SL/start), 2)} %"])
                 
                 print(message)
                 telegram_bot_sendtext(message)
