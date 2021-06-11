@@ -154,93 +154,98 @@ def telegram_bot_sendtext(bot_message):
 
 while True:
 
-    kline = '1m'
-    get_delta_binance("BTCUSDT", 
-                    kline, 
-                    save = True, 
-                    delta=timedelta(hours=2))
-    df = pd.read_csv(f"BTCUSDT-{kline}-data.csv")
-    df = df.drop(
-        ["quote_av", 
-        "trades", 
-        "tb_base_av", 
-        "tb_quote_av", 
-        "ignore", 
-        "close_time"], axis=1)
+    try:
 
-    df['bear'], df['bull'] = wilFractal(df)
-    df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
-    df['atr'] = atr_calcul(df)
+        kline = '1m'
+        get_delta_binance("BTCUSDT", 
+                        kline, 
+                        save = True, 
+                        delta=timedelta(hours=2))
+        df = pd.read_csv(f"BTCUSDT-{kline}-data.csv")
+        df = df.drop(
+            ["quote_av", 
+            "trades", 
+            "tb_base_av", 
+            "tb_quote_av", 
+            "ignore", 
+            "close_time"], axis=1)
 
-    df = df.iloc[-120:].reset_index(drop=True)
+        df['bear'], df['bull'] = wilFractal(df)
+        df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
+        df['atr'] = atr_calcul(df)
 
-    timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
-    start = df.iloc[-3].close
-    if ema20 < ema50 < ema100: # SELL only
-        if bear:
-            print("SELL BEAR")
-            trigger = False
-            if ema20 < h < ema50:
-                print("GOT TRIGGER")
-                trigger = True
-                SL = ema100
-            if trigger and SL-start > 2*atr:
-                print("GOT ATR")
-                leverage = round(0.01/(1-SL/start), 1)
-                TP = start - (SL - start) - 2 * atr
-                print("-----     -----     -----     -----     -----")
-                message = "\n".join([timestamp,
-                f"OPN SELL AT {start} BTC/USDT",
-                f"SL at {round(SL, 2)}",
-                f"TP at {round(TP, 2)}",
-                f"Leverage {leverage} to have : "
-                f"   - Profit {round(100*leverage* (1 - TP/start), 2)} %",
-                f"   - Loss   {round(100*leverage* (SL/start - 1), 2)} %"])
-                
-                print(message)
-                telegram_bot_sendtext(message)
-    
-    if ema20 > ema50 > ema100: # BUY only
-        if bull:
-            print("BUY BULL")
-            trigger = False
-            if ema20 > h > ema50:
-                print("GOT TRIGGER")
-                trigger = True
-                SL = ema100
-            if trigger and start-SL > 2*atr:
-                print("GOT ATR")
-                TP = start + (start - SL) + 2 * atr
-                leverage = round(0.01/(1-SL/start), 1)
-                print("-----     -----     -----     -----     -----")
-                message = "\n".join([timestamp,
-                f"OPEN BUY AT {start} BTC/USDT",
-                f"SL at {round(SL, 2)}",
-                f"TP at {round(TP, 2)}",
-                f"Leverage {leverage} to have : ",
-                f"   - Profit {round(100*leverage* (TP/start - 1), 2)} %",
-                f"   - Loss   {round(100*leverage* (1 - SL/start), 2)} %"])
-                
-                print(message)
-                telegram_bot_sendtext(message)
-                
+        df = df.iloc[-120:].reset_index(drop=True)
 
-    date = np.array(
-        [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
-        for i in range(len(df))]
-    )
-    plt.plot(date, df.close, label='Price')
-    plt.plot(date, df.ema20, label='EMA20')
-    plt.plot(date, df.ema50, label='EMA50')
-    plt.plot(date, df.ema100, label='EMA100')
-    plt.plot(date[df.bear], df.close[df.bear] + 100, 
-            "vr", label='Bear')
-    plt.plot(date[df.bull], df.close[df.bull] - 100, 
-            "^g", label='Bull')
-    plt.legend()
-    plt.grid()
-    plt.title(df.timestamp[len(df)-1])
+        timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
+        start = df.iloc[-3].close
+        if ema20 < ema50 < ema100: # SELL only
+            if bear:
+                print("SELL BEAR")
+                trigger = False
+                if ema20 < h < ema50:
+                    print("GOT TRIGGER")
+                    trigger = True
+                    SL = ema100
+                if trigger and SL-start > 2*atr:
+                    print("GOT ATR")
+                    leverage = round(0.01/(SL/start-1), 1)
+                    TP = start - (SL - start) - 2 * atr
+                    print("-----     -----     -----     -----     -----")
+                    message = "\n".join([timestamp,
+                    f"OPEN SELL AT {start} BTC/USDT",
+                    f"SL at {round(SL, 2)}",
+                    f"TP at {round(TP, 2)}",
+                    f"Leverage {leverage} to have : ",
+                    f"   - Profit {round(100*leverage* (1 - TP/start), 2)} %",
+                    f"   - Loss   {round(100*leverage* (SL/start - 1), 2)} %"])
+                    
+                    print(message)
+                    telegram_bot_sendtext(message)
+        
+        if ema20 > ema50 > ema100: # BUY only
+            if bull:
+                print("BUY BULL")
+                trigger = False
+                if ema20 > h > ema50:
+                    print("GOT TRIGGER")
+                    trigger = True
+                    SL = ema100
+                if trigger and start-SL > 2*atr:
+                    print("GOT ATR")
+                    TP = start + (start - SL) + 2 * atr
+                    leverage = round(0.01/(1-SL/start), 1)
+                    print("-----     -----     -----     -----     -----")
+                    message = "\n".join([timestamp,
+                    f"OPEN BUY AT {start} BTC/USDT",
+                    f"SL at {round(SL, 2)}",
+                    f"TP at {round(TP, 2)}",
+                    f"Leverage {leverage} to have : ",
+                    f"   - Profit {round(100*leverage* (TP/start - 1), 2)} %",
+                    f"   - Loss   {round(100*leverage* (1 - SL/start), 2)} %"])
+                    
+                    print(message)
+                    telegram_bot_sendtext(message)
+                    
 
-    plt.pause(60 - now().second)
-    plt.clf()
+        date = np.array(
+            [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
+            for i in range(len(df))]
+        )
+        plt.plot(date, df.close, label='Price')
+        plt.plot(date, df.ema20, label='EMA20')
+        plt.plot(date, df.ema50, label='EMA50')
+        plt.plot(date, df.ema100, label='EMA100')
+        plt.plot(date[df.bear], df.close[df.bear] + 100, 
+                "vr", label='Bear')
+        plt.plot(date[df.bull], df.close[df.bull] - 100, 
+                "^g", label='Bull')
+        plt.legend()
+        plt.grid()
+        plt.title(df.timestamp[len(df)-1])
+
+        plt.pause(60 - now().second)
+        plt.clf()
+
+    except:
+        print("")
 
