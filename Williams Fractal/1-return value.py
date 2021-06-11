@@ -247,5 +247,11 @@ while True:
         plt.clf()
 
     except:
-        print("")
+        try:
+            telegram_bot_sendtext("Lucas, j'arrive pas à prendre les données sur Binance !!!")
+        except:
+            print("Problem de connection surement, j'ai pas réussi à envoyé de message avec le bot")
+
+        print("Problem, pas possible de télécharger les données.")
+        time.sleep(60 - now().second)
 
