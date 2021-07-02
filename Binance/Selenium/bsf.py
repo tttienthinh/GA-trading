@@ -91,7 +91,7 @@ class BSF:
             element.send_keys(Keys.DELETE)
             element.send_keys(Keys.BACKSPACE)
         # Set Value
-        element.send_keys(value)
+        element.send_keys(str(value))
 
     def set_price(self, price):
         # Set price

@@ -10,9 +10,9 @@ from dateutil import parser
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from IPython.display import clear_output
+# from IPython.display import clear_output
 
-import ta, pickle, json, time, schedule, requests
+import ta, pickle, json, time, requests
 from bsf import BSF, Keys
 
 now = datetime.now
@@ -153,23 +153,34 @@ def telegram_bot_sendtext(bot_message):
 
 b_driver = BSF("/home/tttienthinh/Documents/Programmation\
 /Bash/StartupApp/driver/chromedriver91")
+
+input("Click 'ENTER' when connected !")
+"""
+b_driver.connect(
+    "tranthuongtienthinh@gmail.com",
+    "iae!NICE150402"
+)
+"""
 def open_order(leverage, price, TP, SL, action):
     avbl = b_driver.get_avbl()
-    b_driver.set_leverage(int(leverage))
-    b_driver.set_price(price)
-    b_driver.set_TPSL(
-        TP=TP,
-        SL=SL
-    )
-    if action == "BUY":
-        b_driver.buy()
-    elif action == "SELL":
-        b_driver.buy()
+    if avbl > 10:
+        # b_driver.set_leverage(int(leverage))
+        b_driver.set_price(price)
+        b_driver.set_TPSL(
+            TP=TP,
+            SL=SL
+        )
+        if action == "BUY":
+            b_driver.buy()
+        elif action == "SELL":
+            b_driver.sell()
+    else:
+        avbl = f"Actual pocket have {avbl} no trade"
     return avbl
 
 
 while True:
-
+    print(now())
     try:
 
         kline = '1m'
@@ -197,70 +208,68 @@ while True:
         if ema20 < ema50 < ema100: # SELL only
             if bear:
                 print("SELL BEAR")
-                trigger = False
                 if ema20 < h < ema50:
                     print("GOT TRIGGER")
-                    trigger = True
                     SL = ema100
-                if trigger and SL-start > 2*atr:
-                    print("GOT ATR")
-                    leverage = round(0.01/(SL/start-1), 1)
-                    TP = start - (SL - start) - 2 * atr
-                    print("-----     -----     -----     -----     -----")
-                    try:
-                        avbl = open_order(
-                            leverage, start, TP, SL, "SELL"
-                        )
-                    except:
-                        avbl = "Error while selling"
-                    message = "\n".join([timestamp,
-                    f"message : {avbl}"
-                    f"OPEN SELL AT {start} BTC/USDT",
-                    f"SL at {round(SL, 2)}",
-                    f"TP at {round(TP, 2)}",
-                    f"Leverage {leverage} to have : ",
-                    f"   - Profit {round(100*leverage* (1 - TP/start), 2)} %",
-                    f"   - Loss   {round(100*leverage* (SL/start - 1), 2)} %"])
-                    
-                    print(message)
-                    telegram_bot_sendtext(message)
+                    if SL - start > 2*atr:
+                        print("GOT ATR")
+                        leverage = round(0.01/(SL/start-1), 1)
+                        TP = start - (SL - start) - 2 * atr
+                        print("-----     -----     -----     -----     -----")
+                        try:
+                            avbl = open_order(
+                                leverage, start, TP, SL, "SELL"
+                            )
+                        except IndexError as e:
+                            avbl = f"Error while selling {e}"
+                        message = "\n".join([timestamp,
+                        f"message : {avbl}",
+                        f"OPEN SELL AT {start} BTC/USDT",
+                        f"SL at {round(SL, 2)}",
+                        f"TP at {round(TP, 2)}",
+                        f"Leverage {leverage} to have : ",
+                        f"   - Profit {round(100*leverage* (1 - TP/start), 2)} %",
+                        f"   - Loss   {round(100*leverage* (SL/start - 1), 2)} %"])
+
+                        print(message)
+                        telegram_bot_sendtext(message)
         
         if ema20 > ema50 > ema100: # BUY only
             if bull:
                 print("BUY BULL")
-                trigger = False
                 if ema20 > h > ema50:
                     print("GOT TRIGGER")
-                    trigger = True
                     SL = ema100
-                if trigger and start-SL > 2*atr:
-                    print("GOT ATR")
-                    TP = start + (start - SL) + 2 * atr
-                    leverage = round(0.01/(1-SL/start), 1)
-                    print("-----     -----     -----     -----     -----")
-                    try:
-                        avbl = open_order(
-                            leverage, start, TP, SL, "BUY"
-                        )
-                    except:
-                        avbl = "Error while buying"
-                    message = "\n".join([timestamp,
-                    f"message : {avbl}"
-                    f"OPEN BUY AT {start} BTC/USDT",
-                    f"SL at {round(SL, 2)}",
-                    f"TP at {round(TP, 2)}",
-                    f"Leverage {leverage} to have : ",
-                    f"   - Profit {round(100*leverage* (TP/start - 1), 2)} %",
-                    f"   - Loss   {round(100*leverage* (1 - SL/start), 2)} %"])
-                    
-                    print(message)
-                    telegram_bot_sendtext(message)
+                    if start-SL > 2*atr:
+                        print("GOT ATR")
+                        TP = start + (start - SL) + 2 * atr
+                        leverage = round(0.01/(1-SL/start), 1)
+                        print("-----     -----     -----     -----     -----")
+                        try:
+                            avbl = open_order(
+                                leverage, start, TP, SL, "BUY"
+                            )
+                        except IndexError as e:
+                            avbl = f"Error while selling {e}"
+                        message = "\n".join([timestamp,
+                        f"message : {avbl}",
+                        f"OPEN BUY AT {start} BTC/USDT",
+                        f"SL at {round(SL, 2)}",
+                        f"TP at {round(TP, 2)}",
+                        f"Leverage {leverage} to have : ",
+                        f"   - Profit {round(100*leverage* (TP/start - 1), 2)} %",
+                        f"   - Loss   {round(100*leverage* (1 - SL/start), 2)} %"])
+
+                        print(message)
+                        telegram_bot_sendtext(message)
                     
 
         date = np.array(
             [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
             for i in range(len(df))]
         )
+        """
+        # Plotting data
         plt.plot(date, df.close, label='Price')
         plt.plot(date, df.ema20, label='EMA20')
         plt.plot(date, df.ema50, label='EMA50')
@@ -275,13 +284,16 @@ while True:
 
         plt.pause(60 - now().second)
         plt.clf()
+        """
+        b_driver.refresh()
+        time.sleep(60 - now().second)
 
-    except:
+    except IndexError as e:
         try:
-            telegram_bot_sendtext("Lucas, j'arrive pas à prendre les données sur Binance !!!")
-        except:
-            print("Problem de connection surement, j'ai pas réussi à envoyé de message avec le bot")
+            telegram_bot_sendtext(f"J'arrive pas à prendre les données sur Binance !!! {e}")
+        except IndexError as e2:
+            print(f"Problem de connection surement, j'ai pas réussi à envoyé de message avec le bot {e2}")
 
-        print("Problem, pas possible de télécharger les données.")
+        print(f"Problem, pas possible de télécharger les données. {e}")
         time.sleep(60 - now().second)
 
