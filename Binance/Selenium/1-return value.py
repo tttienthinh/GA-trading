@@ -9,11 +9,11 @@ from dateutil import parser
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 # from IPython.display import clear_output
 
 import ta, pickle, json, time, requests
-from bsf import BSF, Keys
+from bsf import BSF, Keys, webdriver
 
 now = datetime.now
 
@@ -151,8 +151,12 @@ def telegram_bot_sendtext(bot_message):
 
     return response.json()
 
-b_driver = BSF("/home/tttienthinh/Documents/Programmation\
+"""
+b_driver = BSF(webdriver.Chrome(executable_path="/home/tttienthinh/Documents/Programmation\
 /Bash/StartupApp/driver/chromedriver91")
+"""
+b_driver = BSF(webdriver.Firefox(executable_path="/home/tttienthinh/Documents/GA-trading/\
+drivers/geckodriver32")
 
 input("Click 'ENTER' when connected !")
 """

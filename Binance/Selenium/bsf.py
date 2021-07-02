@@ -5,12 +5,9 @@ import pickle, os
 class BSF:
     ORDER_FORM = "//div[@name='orderForm']/"
 
-    def __init__(self, executable_path="chromedriver91") -> None:
-        self.driver = webdriver.Chrome(executable_path=executable_path)
+    def __init__(self, driver):
+        self.driver = driver
         self.driver.get("https://accounts.binance.com/en/login")
-        if not os.path.isdir("cookies"):
-            os.mkdir("cookies")
-        self.driver.maximize_window()
 
     def __del__(self):
         self.close()
@@ -20,26 +17,6 @@ class BSF:
 
     def refresh(self):
         self.driver.refresh()
-
-    def connect(self, email, password):
-        filename = f"cookies/{email}.pkl"
-        cookies_saved = False
-        if os.path.isfile(filename):
-            print("Found Cookies, loading it")
-            cookies_saved = True
-            cookies = pickle.load(open(filename, "rb"))
-            for cookie in cookies: 
-                try:
-                    self.driver.add_cookie(cookie)
-                except:
-                    pass
-        self.driver.find_element_by_name("email").send_keys(email)
-        self.driver.find_element_by_name("password").send_keys(password)
-        self.driver.find_element_by_id("click_login_submit").click()
-        input("Click 'ENTER' when connected !")
-        if not cookies_saved:
-            self.save_cookies(email)
-        self.get_futures()
 
     def save_cookies(self, email):
         filename = f"cookies/{email}.pkl"
