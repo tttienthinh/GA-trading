@@ -1,0 +1,133 @@
+1625259730030	geckodriver	INFO	Listening on 127.0.0.1:37817
+1625259730037	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileswF077"
+1625259736071	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileswF077/search.json.mozlz4", (void 0)))
+1625259746030	Marionette	INFO	Listening on port 34917
+1625259746339	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1625305947231	geckodriver	INFO	Listening on 127.0.0.1:57789
+1625305948162	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileMrDH6m"
+1625305949452	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileMrDH6m/search.json.mozlz4", (void 0)))
+1625305954450	Marionette	INFO	Listening on port 44541
+1625305954625	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+1625397011105	Marionette	INFO	Stopped listening on port 44541
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1625397899653	geckodriver	INFO	Listening on 127.0.0.1:52837
+1625397900655	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilefwYLFS"
+1625397902999	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilefwYLFS/search.json.mozlz4", (void 0)))
+1625397908780	Marionette	INFO	Listening on port 34587
+1625397909095	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+1625405634673	geckodriver	INFO	Listening on 127.0.0.1:38491
+1625405635619	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile5smSMp"
+1625405636745	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5smSMp/search.json.mozlz4", (void 0)))
+1625405642132	Marionette	INFO	Listening on port 39119
+1625405642267	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

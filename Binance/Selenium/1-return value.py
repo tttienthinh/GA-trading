@@ -156,7 +156,7 @@ b_driver = BSF(webdriver.Chrome(executable_path="/home/tttienthinh/Documents/Pro
 /Bash/StartupApp/driver/chromedriver91")
 """
 b_driver = BSF(webdriver.Firefox(executable_path="/home/tttienthinh/Documents/GA-trading/\
-drivers/geckodriver32")
+drivers/geckodriver32"))
 
 input("Click 'ENTER' when connected !")
 """
