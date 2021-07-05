@@ -168,7 +168,7 @@ input("Click 'ENTER' when connected !")
 
 
 def open_order(timestamp, leverage, price, TP, SL, action):
-    b_driver.refresh()
+    # b_driver.refresh()
     avbl = b_driver.get_avbl()
     if avbl > 25:
         # b_driver.set_leverage(int(leverage))
@@ -186,6 +186,7 @@ def open_order(timestamp, leverage, price, TP, SL, action):
     else:
         avbl = f"Actual pocket have {avbl} no trade"
         opened = False
+    b_driver.refresh()
     return avbl, opened
 
 
@@ -193,12 +194,13 @@ while True:
     print(now())
     try:
         kline = '1m'
-        get_delta_binance("BTCUSDT", 
+        try:
+            get_delta_binance("BTCUSDT", 
                         kline, 
                         save = True, 
                         delta=timedelta(hours=2))
-        df = pd.read_csv(f"BTCUSDT-{kline}-data.csv")
-        df = df.drop(
+            df = pd.read_csv(f"BTCUSDT-{kline}-data.csv")
+            df = df.drop(
             ["quote_av", 
             "trades", 
             "tb_base_av", 
@@ -206,11 +208,14 @@ while True:
             "ignore", 
             "close_time"], axis=1)
 
-        df['bear'], df['bull'] = wilFractal(df)
-        df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
-        df['atr'] = atr_calcul(df)
+            df['bear'], df['bull'] = wilFractal(df)
+            df['ema20'], df['ema50'], df['ema100'] = ema(df, [20, 50, 100])
+            df['atr'] = atr_calcul(df)
 
-        df = df.iloc[-120:].reset_index(drop=True)
+            df = df.iloc[-120:].reset_index(drop=True)
+        except:
+            print("erreur getting data")
+            pass
 
         timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
         start = df.iloc[-3].close

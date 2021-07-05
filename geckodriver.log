@@ -26,3 +26,92 @@ JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1625469527913	geckodriver	INFO	Listening on 127.0.0.1:40967
+1625469527920	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilepEOPE4"
+1625469529269	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilepEOPE4/search.json.mozlz4", (void 0)))
+1625469534035	Marionette	INFO	Listening on port 45075
+1625469534116	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1625470620652	Marionette	INFO	Stopped listening on port 45075
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1625474959111	geckodriver	INFO	Listening on 127.0.0.1:37501
+1625474959118	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileGhmtBY"
+1625474960302	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileGhmtBY/search.json.mozlz4", (void 0)))
+1625474964831	Marionette	INFO	Listening on port 45871
+1625474964888	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1625486886068	Marionette	INFO	Stopped listening on port 45871
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x390141,name=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xAC0006,name=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x390141,name=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xAC0006,name=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x390141,name=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xAC0006,name=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1625490578204	geckodriver	INFO	Listening on 127.0.0.1:53785
+1625490578211	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileHckK9f"
+1625490579330	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileHckK9f/search.json.mozlz4", (void 0)))
+1625490583850	Marionette	INFO	Listening on port 41931
+1625490584012	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
