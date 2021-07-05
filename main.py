@@ -151,9 +151,10 @@ def telegram_bot_sendtext(bot_message):
 
     return response.json()
 
-def add(action, price, TP, SL, avbl):
+
+def add(timestamp, action, price, TP, SL, avbl):
     with open("data.csv", "a+") as file:
-        file.write("\n" + ", ".join([str(x) for x in [action, price, TP, SL, avbl]]))
+        file.write("\n" + ", ".join([str(x) for x in [timestamp, action, price, TP, SL, avbl]]))
         file.close()
 
 """
@@ -166,9 +167,10 @@ drivers/geckodriver32"))
 input("Click 'ENTER' when connected !")
 
 
-def open_order(leverage, price, TP, SL, action):
+def open_order(timestamp, leverage, price, TP, SL, action):
+    b_driver.refresh()
     avbl = b_driver.get_avbl()
-    if avbl > 10:
+    if avbl > 25:
         # b_driver.set_leverage(int(leverage))
         b_driver.set_price(price)
         b_driver.set_TPSL(
@@ -179,10 +181,12 @@ def open_order(leverage, price, TP, SL, action):
             b_driver.buy()
         elif action == "SELL":
             b_driver.sell()
-        add(action, price, TP, SL, avbl)
+        add(timestamp, action, price, TP, SL, avbl)
+        opened = True
     else:
         avbl = f"Actual pocket have {avbl} no trade"
-    return avbl
+        opened = False
+    return avbl, opened
 
 
 while True:
@@ -218,15 +222,17 @@ while True:
                     SL = ema100
                     if SL - start > 2*atr:
                         print("GOT ATR")
-                        leverage = round(0.01/(SL/start-1), 1)
+                        # leverage = round(0.01/(SL/start-1), 1) set leverage to earn 1%
+                        leverage = 5
                         TP = start - (SL - start) - 2 * atr
                         print("-----     -----     -----     -----     -----")
                         try:
-                            avbl = open_order(
-                                leverage, start, TP, SL, "SELL"
+                            avbl, opened = open_order(
+                                timestamp, leverage, start, TP, SL, "SELL"
                             )
                         except IndexError as e:
                             avbl = f"Error while selling {e}"
+                            opened = False
                         message = "\n".join([timestamp,
                         f"message : {avbl}",
                         f"OPEN SELL AT {start} BTC/USDT",
@@ -237,7 +243,8 @@ while True:
                         f"   - Loss   {round(100*leverage* (SL/start - 1), 2)} %"])
 
                         print(message)
-                        telegram_bot_sendtext(message)
+                        if opened:
+                            telegram_bot_sendtext(message)
         
         if ema20 > ema50 > ema100: # BUY only
             if bull:
@@ -248,14 +255,16 @@ while True:
                     if start-SL > 2*atr:
                         print("GOT ATR")
                         TP = start + (start - SL) + 2 * atr
-                        leverage = round(0.01/(1-SL/start), 1)
+                        # leverage = round(0.01/(1-SL/start), 1) # set leverage to earn 1%
+                        leverage = 5
                         print("-----     -----     -----     -----     -----")
                         try:
-                            avbl = open_order(
-                                leverage, start, TP, SL, "BUY"
+                            avbl, opened = open_order(
+                                timestamp, leverage, start, TP, SL, "BUY"
                             )
                         except IndexError as e:
                             avbl = f"Error while selling {e}"
+                            opened = False
                         message = "\n".join([timestamp,
                         f"message : {avbl}",
                         f"OPEN BUY AT {start} BTC/USDT",
@@ -266,7 +275,8 @@ while True:
                         f"   - Loss   {round(100*leverage* (1 - SL/start), 2)} %"])
 
                         print(message)
-                        telegram_bot_sendtext(message)
+                        if opened:
+                            telegram_bot_sendtext(message)
                     
 
         date = np.array(
@@ -290,7 +300,7 @@ while True:
         plt.pause(60 - now().second)
         plt.clf()
         """
-        b_driver.refresh()
+        # b_driver.refresh()
         time.sleep(60 - now().second)
 
     except IndexError as e:
