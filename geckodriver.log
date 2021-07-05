@@ -1,0 +1,28 @@
+1625427623993	geckodriver	INFO	Listening on 127.0.0.1:36637
+1625427624001	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileQQDY4B"
+1625427624895	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileQQDY4B/search.json.mozlz4", (void 0)))
+1625427629667	Marionette	INFO	Listening on port 44549
+1625427629756	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+1625465460448	Marionette	INFO	Stopped listening on port 44549
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
