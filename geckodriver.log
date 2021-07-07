@@ -115,3 +115,57 @@ JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a
 JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
 JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
 JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+JavaScript error: https://bin.bnbstatic.com/static/runtime/main-409de3285e7958d284d6.js, line 1: TypeError: Network request failed
+1625534171625	Marionette	INFO	Stopped listening on port 41931
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1625551255301	geckodriver	INFO	Listening on 127.0.0.1:54597
+1625551255308	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileolucPg"
+1625551256499	Marionette	INFO	Marionette enabled
+[GFX1-]: Failed GL context creation for WebRender: 0
+[GFX1-]: FEATURE_FAILURE_WEBRENDER_INITIALIZE_UNSPECIFIED
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+[GFX1-]: Fallback WR to SW-WR
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileolucPg/search.json.mozlz4", (void 0)))
+1625551261182	Marionette	INFO	Listening on port 35721
+1625551261262	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
