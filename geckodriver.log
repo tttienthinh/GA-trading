@@ -115,3 +115,30 @@ JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a
 JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
 JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
 JavaScript error: , line 0: SyntaxError: Server is busy, please try to request a moment later
+1625597273936	geckodriver	INFO	geckodriver 0.19.1
+1625597273966	geckodriver	INFO	Listening on 127.0.0.1:60307
+1625597275960	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.7rU3DhEUXKHR"
+1625597278890	Marionette	TRACE	Marionette enabled
+1625597279622	Marionette	TRACE	Received observer notification toplevel-window-ready
+1625597286028	Marionette	TRACE	Received observer notification marionette-startup-requested
+1625597286028	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1625597286090	Marionette	TRACE	All scripts recorded.
+1625597286091	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1625597286092	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1625597286094	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1625597286095	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1625597286095	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1625597286096	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1625597286097	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1625597286098	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1625597286099	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1625597286100	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1625597286101	Marionette	DEBUG	Setting recommended pref toolkit.cosmeticAnimations.enabled to false
+1625597286279	Marionette	INFO	Listening on port 43871
+1625597286280	Marionette	DEBUG	Marionette is listening
+1625597286376	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:34868
+1625597286385	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1625597286386	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:175: ... t@chrome://marionette/content/server.js:249:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:501:20\n"},null]
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
