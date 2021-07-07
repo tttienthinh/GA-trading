@@ -1,0 +1,109 @@
+1625516812513	geckodriver	INFO	geckodriver 0.19.1
+1625516812542	geckodriver	INFO	Listening on 127.0.0.1:48645
+1625516814118	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.WjbFcTfOmmeK"
+1625516815794	Marionette	TRACE	Marionette enabled
+1625516816192	Marionette	TRACE	Received observer notification toplevel-window-ready
+1625516822174	Marionette	TRACE	Received observer notification marionette-startup-requested
+1625516822181	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1625516822227	Marionette	TRACE	All scripts recorded.
+1625516822229	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1625516822236	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1625516822238	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1625516822239	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1625516822240	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1625516822241	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1625516822244	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1625516822246	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1625516822247	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1625516822248	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1625516822249	Marionette	DEBUG	Setting recommended pref toolkit.cosmeticAnimations.enabled to false
+1625516822464	Marionette	INFO	Listening on port 34733
+1625516822464	Marionette	DEBUG	Marionette is listening
+1625516822508	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:51268
+1625516822571	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1625516822573	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:175: ... t@chrome://marionette/content/server.js:249:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:501:20\n"},null]
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1625516828899	geckodriver	INFO	geckodriver 0.19.1
+1625516828918	geckodriver	INFO	Listening on 127.0.0.1:42803
+1625516830477	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.zi4AduseAjDe"
+1625516832180	Marionette	TRACE	Marionette enabled
+1625516832582	Marionette	TRACE	Received observer notification toplevel-window-ready
+1625516838190	Marionette	TRACE	Received observer notification marionette-startup-requested
+1625516838191	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1625516838538	Marionette	TRACE	All scripts recorded.
+1625516838539	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1625516838540	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1625516838542	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1625516838543	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1625516838543	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1625516838544	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1625516838545	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1625516838546	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1625516838547	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1625516838547	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1625516838548	Marionette	DEBUG	Setting recommended pref toolkit.cosmeticAnimations.enabled to false
+1625516838712	Marionette	INFO	Listening on port 35953
+1625516838713	Marionette	DEBUG	Marionette is listening
+1625516838762	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:59308
+1625516838770	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1625516838772	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:175: ... t@chrome://marionette/content/server.js:249:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:501:20\n"},null]
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1625516843491	geckodriver	INFO	geckodriver 0.19.1
+1625516843512	geckodriver	INFO	Listening on 127.0.0.1:53425
+1625516845073	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.MZjEwBtdf9RB"
+1625516846742	Marionette	TRACE	Marionette enabled
+1625516847147	Marionette	TRACE	Received observer notification toplevel-window-ready
+1625516852654	Marionette	TRACE	Received observer notification marionette-startup-requested
+1625516852656	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1625516853012	Marionette	TRACE	All scripts recorded.
+1625516853013	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1625516853014	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1625516853016	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1625516853016	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1625516853017	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1625516853018	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1625516853019	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1625516853020	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1625516853021	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1625516853021	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1625516853022	Marionette	DEBUG	Setting recommended pref toolkit.cosmeticAnimations.enabled to false
+1625516853191	Marionette	INFO	Listening on port 44357
+1625516853192	Marionette	DEBUG	Marionette is listening
+1625516853248	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:42208
+1625516853251	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1625516853253	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:175: ... t@chrome://marionette/content/server.js:249:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:501:20\n"},null]
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1625516885099	geckodriver	INFO	geckodriver 0.19.1
+1625516885128	geckodriver	INFO	Listening on 127.0.0.1:40009
+1625516886701	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ol9ranxzJZXK"
+1625516888399	Marionette	TRACE	Marionette enabled
+1625516888799	Marionette	TRACE	Received observer notification toplevel-window-ready
+1625516894395	Marionette	TRACE	Received observer notification marionette-startup-requested
+1625516894396	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1625516894453	Marionette	TRACE	All scripts recorded.
+1625516894454	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1625516894455	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1625516894457	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1625516894458	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1625516894459	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1625516894459	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1625516894460	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1625516894462	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1625516894463	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1625516894463	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1625516894465	Marionette	DEBUG	Setting recommended pref toolkit.cosmeticAnimations.enabled to false
+1625516894632	Marionette	INFO	Listening on port 32907
+1625516894633	Marionette	DEBUG	Marionette is listening
+1625516894678	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:56146
+1625516894752	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1625516894753	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:175: ... t@chrome://marionette/content/server.js:249:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:501:20\n"},null]
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
