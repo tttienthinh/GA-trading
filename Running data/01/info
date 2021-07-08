@@ -1,0 +1,2 @@
+line 224
+start = df.iloc[-3].close

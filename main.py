@@ -189,7 +189,7 @@ def open_order(timestamp, leverage, price, TP, SL, action):
     else:
         avbl = f"Actual pocket have {avbl} no trade"
         opened = False
-    b_driver.refresh()
+    # b_driver.refresh()
     return avbl, opened
 
 
@@ -221,7 +221,7 @@ while True:
             pass
 
         timestamp, o, h, l, c, v, bear, bull, ema20, ema50, ema100, atr = df.iloc[-3]
-        start = df.iloc[-3].close
+        start = df.iloc[-1].close
         if ema20 < ema50 < ema100: # SELL only
             if bear:
                 print("SELL BEAR")
@@ -308,7 +308,7 @@ while True:
         plt.pause(60 - now().second)
         plt.clf()
         """
-        # b_driver.refresh()
+        b_driver.refresh()
         time.sleep(60 - now().second)
 
     except IndexError as e:
