@@ -160,9 +160,12 @@ def add(timestamp, action, price, TP, SL, avbl):
 """
 b_driver = BSF(webdriver.Chrome(executable_path="/home/tttienthinh/Documents/Programmation\
 /Bash/StartupApp/driver/chromedriver91")
-"""
 
 b_driver = BSF(webdriver.Firefox(executable_path="/home/pi/Documents/GA-trading/drivers/geckodriver32"))
+"""
+
+# Raspberry
+b_driver = BSF(webdriver.Chrome())
 
 input("Click 'ENTER' when connected !")
 
