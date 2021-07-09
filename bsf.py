@@ -8,7 +8,10 @@ class BSF:
 
     XPATH = {
         "tab-LIMIT": {
-            "all_in": f"{ORDER_FORM}div[4]/form/div[3]/div[1]/div/div[9]",
+            "all_in_25": f"{ORDER_FORM}div[4]/form/div[3]/div[1]/div/div[6]",
+            "all_in_50": f"{ORDER_FORM}div[4]/form/div[3]/div[1]/div/div[7]",
+            "all_in_75": f"{ORDER_FORM}div[4]/form/div[3]/div[1]/div/div[8]",
+            "all_in_100": f"{ORDER_FORM}div[4]/form/div[3]/div[1]/div/div[9]",
             "TPSL_select": f"{ORDER_FORM}div[4]/form/div[4]/div/label/div[1]/input",
             "TPSL_click": f"{ORDER_FORM}div[4]/form/div[4]/div/label/div[1]",
             "TP": f"{ORDER_FORM}div[4]/form/div[4]/div[2]/div/input",
@@ -18,7 +21,10 @@ class BSF:
             "PRICE": f"{ORDER_FORM}div[4]/form/div[1]/div/input",
         },
         "tab-MARKET": {
-            "all_in": f"{ORDER_FORM}div[4]/form/div[2]/div[1]/div/div[9]",
+            "all_in_25": f"{ORDER_FORM}div[4]/form/div[2]/div[1]/div/div[6]",
+            "all_in_50": f"{ORDER_FORM}div[4]/form/div[2]/div[1]/div/div[7]",
+            "all_in_75": f"{ORDER_FORM}div[4]/form/div[2]/div[1]/div/div[8]",
+            "all_in_100": f"{ORDER_FORM}div[4]/form/div[2]/div[1]/div/div[9]",
             "TPSL_select": f"{ORDER_FORM}div[4]/form/div[3]/div/label/div[1]/input",
             "TPSL_click": f"{ORDER_FORM}div[4]/form/div[3]/div/label/div[1]",
             "TP": f"{ORDER_FORM}div[4]/form/div[3]/div[2]/div/input",
@@ -98,10 +104,10 @@ class BSF:
         # Set Value
         element.send_keys(str(value))
 
-    def all_in(self):
-        # Using 100% of Avbl
+    def all_in(self, percent=100): # percent = [25, 50, 75, 100]
+        # Using 25%, 50%, 75%, 100% of Avbl
         self.driver.find_element_by_xpath(
-            self.XPATH[self.order_type]["all_in"]
+            self.XPATH[self.order_type][f"all_in_{percent}"]
         ).click()
 
     def set_price(self, price):
