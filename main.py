@@ -174,13 +174,14 @@ b_driver.set_order_type("tab-MARKET")
 def open_order(timestamp, leverage, price, TP, SL, action):
     # b_driver.refresh()
     avbl = b_driver.get_avbl()
-    if avbl > 25:
+    if avbl > 10:
         # b_driver.set_leverage(int(leverage))
         # b_driver.set_price(price)
         b_driver.set_TPSL(
             TP=TP,
             SL=SL
         )
+        b_driver.all_in()
         if action == "BUY":
             b_driver.buy()
         elif action == "SELL":

@@ -114,10 +114,10 @@ class BSF:
     def set_TPSL(self, TP, SL):
         # Make TP SL available
         if not self.driver.find_element_by_xpath(
-            self.XPATH[self.order_type]["TPSL"]
+            self.XPATH[self.order_type]["TPSL_select"]
         ).is_selected():
             self.driver.find_element_by_xpath(
-                self.XPATH[self.order_type]["TPSL"]
+                self.XPATH[self.order_type]["TPSL_click"]
             ).click()
 
         # Set TP
