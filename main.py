@@ -168,6 +168,7 @@ b_driver = BSF(webdriver.Firefox(executable_path="/home/pi/Documents/GA-trading/
 b_driver = BSF(webdriver.Chrome())
 
 input("Click 'ENTER' when connected !")
+b_driver.set_order_type("tab-MARKET")
 
 
 def open_order(timestamp, leverage, price, TP, SL, action):
@@ -175,7 +176,7 @@ def open_order(timestamp, leverage, price, TP, SL, action):
     avbl = b_driver.get_avbl()
     if avbl > 25:
         # b_driver.set_leverage(int(leverage))
-        b_driver.set_price(price)
+        # b_driver.set_price(price)
         b_driver.set_TPSL(
             TP=TP,
             SL=SL
@@ -287,11 +288,11 @@ while True:
                             telegram_bot_sendtext(message)
                     
 
+        """
         date = np.array(
             [datetime.strptime(df.timestamp[i], '%Y-%m-%d %H:%M:%S') 
             for i in range(len(df))]
         )
-        """
         # Plotting data
         plt.plot(date, df.close, label='Price')
         plt.plot(date, df.ema20, label='EMA20')
