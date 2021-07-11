@@ -181,7 +181,7 @@ def open_order(timestamp, leverage, price, TP, SL, action):
             TP=TP,
             SL=SL
         )
-        b_driver.all_in()
+        b_driver.all_in(25)
         if action == "BUY":
             b_driver.buy()
         elif action == "SELL":
@@ -233,7 +233,7 @@ while True:
                     if SL - start > 2*atr:
                         print("GOT ATR")
                         # leverage = round(0.01/(SL/start-1), 1) set leverage to earn 1%
-                        leverage = 5
+                        leverage = 20
                         TP = start - (SL - start) - 2 * atr
                         print("-----     -----     -----     -----     -----")
                         try:
@@ -266,7 +266,7 @@ while True:
                         print("GOT ATR")
                         TP = start + (start - SL) + 2 * atr
                         # leverage = round(0.01/(1-SL/start), 1) # set leverage to earn 1%
-                        leverage = 5
+                        leverage = 20
                         print("-----     -----     -----     -----     -----")
                         try:
                             avbl, opened = open_order(
