@@ -230,8 +230,9 @@ while True:
                 if ema20 < h < ema50:
                     print("GOT TRIGGER")
                     SL = ema100
-                    if SL - start > 2*atr:
-                        print("GOT ATR")
+                    # if SL - start > 2*atr:
+                    if (SL - start)/start > 5/1_000:
+                        print("GOT 5/1_000")
                         # leverage = round(0.01/(SL/start-1), 1) set leverage to earn 1%
                         leverage = 20
                         TP = start - (SL - start) - 2 * atr
@@ -262,8 +263,8 @@ while True:
                 if ema20 > h > ema50:
                     print("GOT TRIGGER")
                     SL = ema100
-                    if start-SL > 2*atr:
-                        print("GOT ATR")
+                    if (start-SL)/start > 5/1_000:
+                        print("GOT 5/1_000")
                         TP = start + (start - SL) + 2 * atr
                         # leverage = round(0.01/(1-SL/start), 1) # set leverage to earn 1%
                         leverage = 20
